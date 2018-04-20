@@ -1,0 +1,79 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+  <body class style>
+    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <title>Propulso: All-in-one software for freelancers</title>
+        <link rel="canonical" href="https://propulso.io/en">
+        <link rel="alternate" href="https://propulso.io/en" hreflang="en">
+        <link rel="alternate" href="https://propulso.io/fr" hreflang="fr">
+        <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Save time on a daily basis by easily managing your customers, invoices, payments, appointments, customer records and much more.">
+        <meta name="author" content="Propulso">
+        <meta name="copyright" content="Propulso">
+        <meta name="theme-color" content="#ffa000">
+        <meta name="robots" content="index, follow">
+        <meta name="robots" content="noodp">
+        <meta name="robots" content="noydir">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Propulso: All-in-one software for freelancers">
+        <meta property="og:description" content="Save time on a daily basis by easily managing your customers, invoices, payments, appointments, customer records and much more.">
+        <meta property="og:url" content="https://propulso.io/">
+        <meta property="og:site_name" content="Propulso">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Propulso: All-in-one software for freelancers">
+        <meta name="twitter:description" content="Save time on a daily basis by easily managing your customers, invoices, payments, appointments, customer records and much more.">
+
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/bundles/bf55a508dddff1cd198a4dd9a847f5127f26ec5a.css">
+        
+        
+        
+    </head>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-orange">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'index' %}"><img src="https://d33wubrfki0l68.cloudfront.net/67a4995f0d6ce4e69f8ca496de0ee0d2832e9385/29a04/assets/img/logo_rocket.png" height="35" alt="Propulso"><img src="https://d33wubrfki0l68.cloudfront.net/ae259063c171baba491308b7cb6ceacef91db0bd/6df5c/assets/img/logo_name.png" class="hidden-sm" height="30" alt="Propulso"></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'topics' %}" onclick="goTo('#features'); ga('send', 'event', 'Menu', 'click', 'Features');">Topics</a></li>
+                            <li><a href="#" onclick="goTo('#price'); ga('send', 'event', 'Menu', 'click', 'Price');">Pricing</a></li>
+                            <li class="hidden-sm"><a href="/en/faq">FAQ</a></li>
+                            <li><a href="#" onclick="goTo('#footer'); ga('send', 'event', 'Menu', 'click', 'Contact');">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/fr"><i class="fa fa-globe"></i> FR</a></li>
+                            <!--<li><a href="https://app.propulso.io"><i class="fa fa-lock"></i> Log In</a></li>-->
+                            {% if user.is_authenticated %}
+                            <li><a><i class="fa fa-lock"></i>Hello, {{ user }}.</a></li>
+                            <li><a href="{% url 'logout' %}"></i> Log Out</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Log In</a></li>
+                            <li><a href="{% url 'register' %}" class="btn-menu">Sign Up</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+{% block content %} {% endblock content%}
+</html>

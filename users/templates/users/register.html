@@ -1,0 +1,36 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+{% load bootstrap3 %}
+
+<head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/4c9026e4fde45c1bfe34aeb2d6208b7de9f5e9cb/assets/css/app.css">
+
+    </head>
+
+<div class="login-container">
+        <img src="https://d33wubrfki0l68.cloudfront.net/8aed63e1b8e0e51ae2f7fa499f03f189979cdbd2/9971d/assets/img/logo.png" class="login-logo">
+        <img src="https://d33wubrfki0l68.cloudfront.net/9b6d1a9e9ed6679dc0b61fc374bacae58fea2bea/cdf91/assets/img/name.png" class="login-logo">
+        <div class="label ng-binding">v.1.6.2</div>
+        <div class="login-form" ng-class="{'bouce': error}">
+            <loading><!-- ngIf: loading --></loading>
+            <!-- Login form -->
+            <!-- ngIf: !loading -->
+            <div ng-if="!loading" class="ng-scope">
+                <!-- ngIf: mode == 'login' -->
+                <div ng-if="mode == 'login'" class="ng-scope">
+
+					<form action="{% url 'register' %}" method="post">
+					  {% csrf_token %}
+					  {% bootstrap_form form %}
+					  {% buttons %}
+					    <button class="btn btn-lg btn-pill btn-primary-outline wfull login-button" name="submit">
+					    register
+					    </button>
+					    {% endbuttons %}
+					    <input type="hidden" name="next" value="{% url 'index' %}">
+					</form>
+
+{% endblock content %}

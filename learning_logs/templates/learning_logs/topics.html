@@ -1,0 +1,102 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+{% load bootstrap3 %}
+
+
+<head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <title>Propulso: FAQ</title>
+        <link rel="canonical" href="https://propulso.io/fr">
+        <link rel="alternate" href="https://propulso.io/en/faq" hreflang="en">
+        <link rel="alternate" href="https://propulso.io/fr/faq" hreflang="fr">
+        <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+        <meta name="author" content="Propulso">
+        <meta name="copyright" content="Propulso">
+        <meta name="theme-color" content="#ffa000">
+        <meta name="robots" content="index, follow">
+        <meta name="robots" content="noodp">
+        <meta name="robots" content="noydir">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Propulso: FAQ">
+        <meta property="og:description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+        <meta property="og:url" content="https://propulso.io/">
+        <meta property="og:site_name" content="Propulso">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Propulso: FAQ">
+        <meta name="twitter:description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/bundles/fda814668a22a7e97e62cc871a0773fcbddbb782.css">
+        
+        
+        
+        
+    </head>
+
+<section class="faq" id="top">
+            <div class="container">
+                <h1 class="faq-heading">Topics</h1>
+                <div class="panel-group" id="accordion">
+                	<div class="row">
+                    <h3><a data-toggle="modal" data-target="#new_topic">Add topic</a></h3>
+                    	    <!--登录莫泰框-->
+									    <div class="modal fade" id="new_topic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									      <div class="modal-dialog">
+									        <div class="modal-content">
+									          <div class="modal-header">
+									            <button type="button" class="close"
+									                    data-dismiss="modal" aria-hidden="true">
+									              &times;
+									            </button>
+									            <h4 class="modal-title" id="myModalLabel">
+									              添加Topic
+									            </h4>
+									          </div>
+									          <div class="modal-body">
+									            <from class="form-horizontal"  role="form" action="{% url 'new_topic' %}" method='post'>
+									            	{% csrf_token %}
+									            	{{ form.as_p }}
+									            </from>
+									          </div>
+									          <div class="modal-footer">
+									            <button type="button" class="btn btn-default"
+									                    data-dismiss="modal">关闭
+									            </button>
+									            <input  type="submit" class="btn btn-primary">
+									            </button>
+									          </div>
+									        </div>
+									      </div><!-- /.modal-content -->
+									    </div><!-- /.modal -->
+                    <div class="separator"></div>
+                    {% for topic in topics %}
+                    <div class="panel panel-default">
+                    	<a href="{% url 'topic' topic.id %}">
+                        <div class="panel-heading">
+                            <h4 class="panel-title collapsed">
+                                <i class="fa fa-map-signs"></i>
+                                {{ topic }}
+                            </h4>
+                        </div>
+                      </a>
+                    </div>
+                    {% empty %}
+                    nothing
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,78 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+<head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <title>Propulso: FAQ</title>
+        <link rel="canonical" href="https://propulso.io/fr">
+        <link rel="alternate" href="https://propulso.io/en/faq" hreflang="en">
+        <link rel="alternate" href="https://propulso.io/fr/faq" hreflang="fr">
+        <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+        <meta name="author" content="Propulso">
+        <meta name="copyright" content="Propulso">
+        <meta name="theme-color" content="#ffa000">
+        <meta name="robots" content="index, follow">
+        <meta name="robots" content="noodp">
+        <meta name="robots" content="noydir">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Propulso: FAQ">
+        <meta property="og:description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+        <meta property="og:url" content="https://propulso.io/">
+        <meta property="og:site_name" content="Propulso">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Propulso: FAQ">
+        <meta name="twitter:description" content="Sauvez du temps au quotidien en gérant facilement vos clients, factures, paiements, rendez-vous, dossiers clients et bien plus encore.">
+
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/bundles/fda814668a22a7e97e62cc871a0773fcbddbb782.css">
+        
+        
+        
+        
+    </head>
+
+<section class="faq" id="top">
+            <div class="container">
+                <h1 class="faq-heading">Topic : {{ topic}}</h1>
+
+                <div class="panel-group" id="accordion">
+                    <a href="{% url 'new_entry' topic.id %}"><h3>Add entry</h3></a>
+                    
+                    <div class="separator"></div>
+                    {% for entry in entries %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false">
+                            <h4 class="panel-title">
+                                <i class="fa fa-info-circle"></i>
+                                {{ entry.pup_date }}
+                            </h4>
+                        </div>
+                            <div class="panel-body">
+                              <p>
+                                {{ entry.text|linebreaks }}
+                                <a class="btn btn-default" href="{% url 'edit_entry' entry.id %}">edit</a>
+                              </p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    there is nothing
+                    {% endfor %}
+                  </div>
+                </div>
+            	</div>
+            	
+</section>
+
+
+{% endblock content %}
